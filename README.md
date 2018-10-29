@@ -91,7 +91,7 @@ Podemos usar una actividad con varios fragmentos. Usando Navigation Manager.
 Para eso debemos agregar soporte al archivo, en gradle `build.gradle`
 ```gradle 
 dependencies {
-	compile 'com.jakewharton:butterknife:7.0.1'
+	implementation 'com.jakewharton:butterknife:7.0.1'
 }
 ```
 
@@ -116,6 +116,7 @@ public void submit(){
 
 > **IMPORTANTE** Hay un pluggin para android studio llamado `ButterKnife - Zelezny`, que permite crear las inyecciones automáticas. Solo basta con xml y seleccionar los elementos que quiero enlazar.
 
+Luego que se instale la librería, podemos hacer usar las teclas `alt + ins`, y parados sobre la relación al layout, para usar la función `Generate ButterKnife injections`.
 
 ## Layout
 
@@ -156,6 +157,34 @@ Para los eventos en el recyclerView, podemos crear una interfaz con un callback.
 Para el recyclerView, se debe agregar el soporte en `build.gradle`
 ```
 dependencies {
-	compile 'com.android.support:recyclerview-v7:+'
+	implementation 'com.android.support:recyclerview-v7:+'
 }
 ```
+
+## Gradle
+Android Studio utiliza  gradle como su sistema de construcción, este tiene dos scrips de configuración. Uno para el proyecto y otro para la app.
+
+Podemos definir las variables más importantes en el archivo `build.gradle` de la app. Usando la notación
+```
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+
+    supportLibraryVersion = '28.0.0'
+    butterknifeVersion = '7.0.1'
+}
+``` 
+
+Para incluir estas variables en el archivo de configuración de la app `build.gradle`, se usa la siguiente notación para accerder a las variables
+```
+implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+```
+
+Donde usamos **$rootProject.ext.supportLibraryVersion**, el último es la notación de punto.
+
+Usando interfaces, hacemos que la interfaz le comunique datos al fragmento.
+
+## Material design
+
+Material Design son guías de diseño, desarrolladas por google. Para personalizar colores, hay una página muy util llamada [Material Palette](https://www.materialpalette.com/)

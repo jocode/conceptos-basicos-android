@@ -9,16 +9,18 @@
 
     <include
         android:id="@+id/tipContent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/content_tip"/>
 
     <fragment
         android:id="@+id/fragmentList"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tipContent"
         android:name="com.crexative.tipcalc.fragments.TipHistoryListFragment"
-        tools:layout="@layout/fragment_tip_history_list"/>
+        tools:layout="@layout/fragment_tip_history_list"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/margin_default"
+        android:layout_toRightOf="@+id/tipContent"/>
 
 </RelativeLayout>
